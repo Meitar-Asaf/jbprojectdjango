@@ -1,0 +1,130 @@
+[
+  { "model": "vacations_app.country", "pk": 1, "fields": { "country_name": "Japan" } },
+  { "model": "vacations_app.country", "pk": 2, "fields": { "country_name": "Italy" } },
+  { "model": "vacations_app.country", "pk": 3, "fields": { "country_name": "Brazil" } },
+  { "model": "vacations_app.country", "pk": 4, "fields": { "country_name": "Canada" } },
+  { "model": "vacations_app.country", "pk": 5, "fields": { "country_name": "Australia" } },
+  { "model": "vacations_app.country", "pk": 6, "fields": { "country_name": "Greece" } },
+  { "model": "vacations_app.country", "pk": 7, "fields": { "country_name": "Thailand" } },
+  { "model": "vacations_app.country", "pk": 8, "fields": { "country_name": "Morocco" } },
+  { "model": "vacations_app.country", "pk": 9, "fields": { "country_name": "Switzerland" } },
+  { "model": "vacations_app.country", "pk": 10, "fields": { "country_name": "New Zealand" } },
+
+  { "model": "vacations_app.vacation", "pk": 1, "fields": {
+    "country": 1,
+    "description": "Cherry blossoms and Tokyo adventures",
+    "start_date": "2025-08-15",
+    "end_date": "2025-08-25",
+    "price": "2100.00",
+    "image": "japan.jpg"
+  }},
+  { "model": "vacations_app.vacation", "pk": 2, "fields": {
+    "country": 2,
+    "description": "Romantic escape in Rome",
+    "start_date": "2025-09-10",
+    "end_date": "2025-09-20",
+    "price": "1950.00",
+    "image": "rome.jpg"
+  }},
+  { "model": "vacations_app.vacation", "pk": 3, "fields": {
+    "country": 3,
+    "description": "Samba, sun, and Rio beaches",
+    "start_date": "2025-07-05",
+    "end_date": "2025-07-15",
+    "price": "1800.00",
+    "image": "brazil.jpg"
+  }},
+  { "model": "vacations_app.vacation", "pk": 4, "fields": {
+    "country": 4,
+    "description": "Canadian Rockies hiking trip",
+    "start_date": "2025-10-01",
+    "end_date": "2025-10-10",
+    "price": "1750.00",
+    "image": "canada.jpg"
+  }},
+  { "model": "vacations_app.vacation", "pk": 5, "fields": {
+    "country": 5,
+    "description": "Great Barrier Reef diving",
+    "start_date": "2025-11-12",
+    "end_date": "2025-11-22",
+    "price": "2200.00",
+    "image": "great_barrier_reef.jpg"
+  }},
+  { "model": "vacations_app.vacation", "pk": 6, "fields": {
+    "country": 6,
+    "description": "Santorini sunsets and beach vibes",
+    "start_date": "2025-06-20",
+    "end_date": "2025-06-30",
+    "price": "2000.00",
+    "image": "greece.jpg"
+  }},
+  { "model": "vacations_app.vacation", "pk": 7, "fields": {
+    "country": 7,
+    "description": "Thai temples and island hopping",
+    "start_date": "2025-09-05",
+    "end_date": "2025-09-15",
+    "price": "1600.00",
+    "image": "thailand.jpg"
+  }},
+  { "model": "vacations_app.vacation", "pk": 8, "fields": {
+    "country": 8,
+    "description": "Desert magic in Marrakech",
+    "start_date": "2025-12-01",
+    "end_date": "2025-12-10",
+    "price": "1500.00",
+    "image": "marrakech.jpg"
+  }},
+  { "model": "vacations_app.vacation", "pk": 9, "fields": {
+    "country": 9,
+    "description": "Swiss Alps skiing retreat",
+    "start_date": "2025-12-15",
+    "end_date": "2025-12-25",
+    "price": "2500.00",
+    "image": "switzerland.jpg"
+  }},
+  { "model": "vacations_app.vacation", "pk": 10, "fields": {
+    "country": 10,
+    "description": "Adventure in New Zealand’s nature",
+    "start_date": "2025-10-20",
+    "end_date": "2025-10-30",
+    "price": "2400.00",
+    "image": "newzealand.jpg"
+  }},
+  { "model": "vacations_app.vacation", "pk": 11, "fields": {
+    "country": 1,
+    "description": "Sushi, shrines, and sumo",
+    "start_date": "2025-08-01",
+    "end_date": "2025-08-10",
+    "price": "2100.00",
+    "image": "tokyo.jpg"
+  }},
+  { "model": "vacations_app.vacation", "pk": 12, "fields": {
+    "country": 2,
+    "description": "Vineyards and Tuscan countryside",
+    "start_date": "2025-07-18",
+    "end_date": "2025-07-28",
+    "price": "2000.00",
+    "image": "tuscany.jpg"
+  }},
+
+  { "model": "auth.user", "pk": 100, "fields": {
+    "username": "testuser@example.com",
+    "password": "pbkdf2_sha256$1000000$V7Yxxp64pp18gpWYol1ayA$Mk/8jx20eLaauAy6Cz4eQ/6KuEIBPv4rn0rWDlxVHww=",
+    "is_superuser": false,
+    "first_name": "Test",
+    "last_name": "User",
+    "email": "testuser@example.com",
+    "is_staff": false,
+    "is_active": true
+  }},
+  { "model": "auth.user", "pk": 101, "fields": {
+    "username": "admin@example.com",
+    "password": "pbkdf2_sha256$1000000$lLtafvYB7yMuDTf8SFncco$2PX0FuWL+A1uEXn++KvqXZEi31QI34CGRHWn2QE9P7U=",
+    "is_superuser": true,
+    "first_name": "Admin",
+    "last_name": "User",
+    "email": "admin@example.com",
+    "is_staff": true,
+    "is_active": true
+  }}
+]
