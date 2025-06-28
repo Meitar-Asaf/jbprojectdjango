@@ -1,0 +1,36 @@
+{% extends 'index.html' %}
+{% load static %}
+
+{% block title %}Home | Dreamy Vacations{% endblock %}
+
+{% block content %}
+
+<section class="hero" style="background-image: url('{% static "images/hero.jpg" %}');">
+    <div class="hero-inner container">
+        <h1>Your Next Dream Vacation Starts Here!</h1>
+        <p>The hottest destinations, the finest hotels — all for you.</p>
+    </div>
+</section>
+
+<section class="packages">
+    <h2>Our Popular Packages</h2>
+    <div class="featured-grid">
+        {% for vacation in vacations %}
+        <div class="card">
+            <div class="card-body">
+                <img src="{{ vacation.image.url }}">
+                <h3>{{ vacation.country}}</h3>
+                <br>
+                <p>{{ vacation.description }}</p>
+                <br>
+                <a>{{ vacation.start_date }} - {{ vacation.end_date }}</a>
+                <div class="like-btn">❤️ <span class="likes-count"> {{ vacation.likes.count }}</span></div>
+            </div>
+            </div>
+        {% endfor %}
+        </div>
+        
+    </div>
+</section>
+
+{% endblock %}

@@ -5,7 +5,7 @@ from django.views.generic.edit import CreateView
 # Create your views here.
 
 
-class RegisterView(CreateView):
-    form_class = UserRegisterForm
-    template_name = 'register.html'
-    success_url = '/'
+# class RegisterView(CreateView):
+#     form_class = UserRegisterForm
+#     template_name = 'register.html'
+#     success_url = '/'

@@ -1,0 +1,220 @@
+/* 1. Reset & Variables */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+:root {
+  --clr-primary: #0077b6;
+  --clr-secondary: #00b4d8;
+  --clr-accent: #ffd166;
+  --clr-dark: #023047;
+  --clr-light: #f1faee;
+  --ff-heading: 'Montserrat', sans-serif;
+  --ff-body: 'Lora', serif;
+  --transition: 0.3s ease-in-out;
+}
+
+/* 2. Layout: flex column with sticky footer */
+html, body {
+  height: 100%;
+}
+body {
+  display: flex;
+  flex-direction: column;
+  font-family: var(--ff-body);
+  background: url('../images/vacation-bg.jpg') no-repeat center center fixed;
+  background-size: cover;
+  color: var(--clr-dark);
+  line-height: 1.6;
+}
+
+
+/* 3. Container */
+.container {
+  max-width: 1200px;
+  width: 90%;
+  margin: 0 auto;
+}
+
+/* 4. Navbar */
+.header {
+  background: rgba(255,255,255,0.95);
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 0;
+}
+.logo {
+  font-family: var(--ff-heading);
+  font-size: 1.8rem;
+  color: var(--clr-primary);
+  text-decoration: none;
+}
+.nav-links {
+  display: flex;
+  gap: 1.5rem;
+  list-style: none;
+}
+.nav-links li a {
+  text-decoration: none;
+  color: var(--clr-dark);
+  font-weight: 500;
+  transition: var(--transition);
+}
+.nav-links li a:hover {
+  color: var(--clr-primary);
+}
+.btn {
+  padding: 0.4rem 0.8rem;
+  border: 2px solid var(--clr-primary);
+  border-radius: 4px;
+  transition: var(--transition);
+}
+.btn:hover {
+  background: var(--clr-primary);
+  color: #fff;
+}
+.btn-primary {
+  background: var(--clr-accent);
+  color: var(--clr-dark);
+  font-weight: 700;
+}
+.btn-primary:hover {
+  background: var(--clr-secondary);
+  color: #fff;
+}
+.nav-toggle {
+  display: none;
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+/* 5. Hero */
+.hero {
+  background-size: cover;
+  background-position: center;
+  padding: 6rem 0;
+  text-align: center;
+  color: #fff;
+  flex-shrink: 0;
+}
+.hero-inner h1 {
+  font-family: var(--ff-heading);
+  font-size: 3rem;
+  margin-bottom: 1rem;
+}
+.hero-inner p {
+  font-size: 1.2rem;
+  margin-bottom: 1.5rem;
+}
+
+/* 6. Main content (grows) */
+.main-content {
+  flex: 1;
+  padding: 2rem 0;
+}
+
+/* 7. Footer */
+.footer {
+  text-align: center;
+  padding: 1.5rem 0;
+  background: var(--clr-dark);
+  color: #ccc;
+  flex-shrink: 0;
+  font-size: 0.9rem;
+}
+
+/* 8. Featured grid (example inside content) */
+.featured-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px,1fr));
+  gap: 1.5rem;
+}
+.card {
+  background: #fff;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+  transition: transform var(--transition);
+}
+.card img {
+  width: 100%;
+  display: block;
+}
+.card-body {
+  padding: 1rem;
+}
+.card-body h3 {
+  font-family: var(--ff-heading);
+  margin-bottom: 0.5rem;
+}
+.card-body p {
+  font-size: 0.9rem;
+  color: #555;
+}
+.card:hover {
+  transform: translateY(-5px);
+}
+
+/* 9. Responsive */
+@media (max-width: 768px) {
+  .nav-links {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: #fff;
+    flex-direction: column;
+    gap: 0;
+    display: none;
+  }
+  .nav-links.open {
+    display: flex;
+  }
+  .nav-links li {
+    border-top: 1px solid #eee;
+  }
+  .nav-links li:first-child {
+    border-top: none;
+  }
+  .nav-links li a {
+    padding: 1rem;
+  }
+  .nav-toggle {
+    display: block;
+  }
+  .hero-inner h1 {
+    font-size: 2.2rem;
+  }
+}
+.like-btn {
+  margin-top: 1rem;
+  font-size: 1.2rem;
+  cursor: pointer;
+  user-select: none;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  color: var(--clr-accent);
+  transition: var(--transition);
+}
+
+.like-btn:hover {
+  transform: scale(1.1);
+  color: var(--clr-secondary);
+}
+
+.likes-count {
+  font-weight: bold;
+  color: var(--clr-dark);
+}
+
