@@ -22,12 +22,19 @@ html, body {
 body {
   display: flex;
   flex-direction: column;
-  font-family: var(--ff-body);
   background: url('../images/vacation-bg.jpg') no-repeat center center fixed;
   background-size: cover;
   color: var(--clr-dark);
   line-height: 1.6;
 }
+h1, h2, h3, .logo {
+  font-family: 'Alex Brush', cursive;
+}
+
+body, p, a, li, button {
+  font-family: 'Open Sans', sans-serif;
+}
+
 
 
 /* 3. Container */
@@ -163,6 +170,95 @@ body {
 }
 .card:hover {
   transform: translateY(-5px);
+}
+  .form-card {
+  background: #fff;
+  max-width: 450px;
+  margin: 3rem auto;
+  padding: 2rem 2.5rem;
+  border-radius: 12px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+  font-family: 'Open Sans', sans-serif;
+  color: var(--clr-dark);
+}
+
+.form-card h2 {
+  font-family: 'Alex Brush', cursive;
+  font-size: 2.5rem;
+  margin-bottom: 1.5rem;
+  color: var(--clr-primary);
+  text-align: center;
+}
+
+.form-card p {
+  margin-bottom: 1rem;
+  font-size: 0.95rem;
+  color: #555;
+}
+
+.form-card label {
+  display: block;
+  margin-bottom: 0.4rem;
+  font-weight: 600;
+  font-size: 1rem;
+}
+
+.form-card input[type="text"],
+.form-card input[type="email"],
+.form-card input[type="password"] {
+  width: 100%;
+  padding: 0.65rem 1rem;
+  margin-bottom: 1.3rem;
+  border: 1.8px solid #ddd;
+  border-radius: 8px;
+  font-size: 1rem;
+  transition: border-color 0.3s ease;
+  font-family: 'Open Sans', sans-serif;
+}
+
+.form-card input[type="text"]:focus,
+.form-card input[type="email"]:focus,
+.form-card input[type="password"]:focus {
+  border-color: var(--clr-primary);
+  outline: none;
+}
+
+.form-card button.btn-primary {
+  width: 100%;
+  padding: 0.85rem;
+  background-color: var(--clr-primary);
+  border: none;
+  border-radius: 8px;
+  color: white;
+  font-weight: 700;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  font-family: 'Open Sans', sans-serif;
+}
+
+.form-card button.btn-primary:hover {
+  background-color: var(--clr-secondary);
+}
+.login-link {
+  text-align: center;
+  margin-top: 1.5rem;
+  font-size: 0.95rem;
+  color: #555;
+  font-family: 'Open Sans', sans-serif;
+}
+
+.login-link a {
+  color: var(--clr-primary);
+  text-decoration: none;
+  font-weight: 600;
+  margin-left: 0.3rem;
+  transition: color 0.3s ease;
+}
+
+.login-link a:hover {
+  color: var(--clr-secondary);
+  text-decoration: underline;
 }
 
 /* 9. Responsive */

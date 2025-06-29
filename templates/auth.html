@@ -1,0 +1,29 @@
+{% extends "index.html" %}
+
+{% block content %}
+<div class="form-card">
+
+  <h2>
+    {% if form_type == "signup" %}
+    Create Your Account
+    {% elif form_type == "login" %} Log In to your account {% endif %}</h2>
+  <form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit" class="btn-primary">
+        {% if form_type == "signup" %}
+        Sign Up
+        {% elif form_type == "login" %} Log In {% endif %}
+    </button>
+  </form>
+
+  <p class="login-link">
+    {% if form_type == "signup" %}
+    Already have an account?
+    <a href=" {% url 'login' %}">Log in here</a>
+    {% elif form_type == "login" %} Don't have an account yet?
+    <a href=" {% url 'signup' %}">Sign up here</a>
+    {% endif %}
+  </p>
+</div>
+{% endblock %}

@@ -7,11 +7,10 @@
     <link rel="stylesheet" href="{% static 'css/style.css' %}" />
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&family=Alex+Brush&display=swap" rel="stylesheet">
 
-
-    <link rel="shortcut icon" href="{% static 'favicon.ico' %}" type="image/x-icon" />
 </head>
 <body>
-
+{% block header %}
+{% if user.is_authenticated %}
 <header class="header">
     <nav class="navbar container">
         <div class="logo">Dreamy Vacations</div>
@@ -23,6 +22,8 @@
         </ul>
     </nav>
 </header>
+{% endif %}
+{% endblock %}
 
 <div class="main-content container">
     {% block content %}
