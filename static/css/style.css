@@ -190,6 +190,7 @@ body, p, a, li, button {
   text-align: center;
 }
 
+
 .form-card p {
   margin-bottom: 1rem;
   font-size: 0.95rem;
@@ -310,8 +311,10 @@ body, p, a, li, button {
   display: flex;
   align-items: center;
   gap: 0.4rem;
-  color: var(--clr-accent);
+  color: inherit;
   transition: var(--transition);
+  border: none;
+  background-color: inherit;
 }
 
 .like-btn:hover {

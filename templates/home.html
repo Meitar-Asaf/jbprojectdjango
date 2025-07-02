@@ -1,4 +1,4 @@
-{% extends 'index.html' %}
+{% extends 'layout.html' %}
 {% load static %}
 
 {% block title %}Home | Dreamy Vacations{% endblock %}
@@ -23,7 +23,9 @@
                 <br>
                 <p>{{ vacation.description }}</p>
                 <br>
-                <a>{{ vacation.start_date }} - {{ vacation.end_date }}</a>
+                <p>{{ vacation.start_date }} - {{ vacation.end_date }}</p>
+                <br>
+                <p>${{ vacation.price }}</p>
             {% if vacation.liked %}
                 <form action="{% url 'unlike_vacation' %}" method="POST">
             {% else %}

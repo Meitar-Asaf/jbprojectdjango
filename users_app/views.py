@@ -1,7 +1,8 @@
 from users_app.forms import UserRegisterForm,UserLoginForm
 from django.shortcuts import render
 from django.views.generic.edit import CreateView
-from django.contrib.auth.views import LoginView
+from django.contrib.auth.views import LoginView,LogoutView
+from django.urls import reverse_lazy
 
 
 # Create your views here.
@@ -38,3 +39,6 @@ class LoginView(LoginView):
         context = super().get_context_data(**kwargs)
         context['form_type'] = 'login'
         return context
+
+class LogoutView(LogoutView):
+    next_page = reverse_lazy('login')
