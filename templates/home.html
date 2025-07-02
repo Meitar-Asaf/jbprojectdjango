@@ -24,7 +24,14 @@
                 <p>{{ vacation.description }}</p>
                 <br>
                 <a>{{ vacation.start_date }} - {{ vacation.end_date }}</a>
-                <div class="like-btn">❤️ <span class="likes-count"> {{ vacation.likes.count }}</span></div>
+            {% if vacation.liked %}
+                <form action="{% url 'unlike_vacation' %}" method="POST">
+            {% else %}
+                <form action="{% url 'like_vacation' %}" method="POST">
+            {% endif %}
+                    {% csrf_token %}
+                <button type="submit" class="like-btn" name="vacation_id" value="{{ vacation.id }}">❤️ <span class="likes-count"> {{ vacation.likes.count }}</span></button>
+                </form>
             </div>
             </div>
         {% endfor %}
