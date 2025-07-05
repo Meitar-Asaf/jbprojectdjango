@@ -16,7 +16,16 @@
     
     <div>
       {{ field.label_tag }}
-      {{ field }}
+      {% if field.name == "password1" or field.name == "password2" or field.name == "password"%}
+      <input type="password" name="{{ field.name }}" placeholder="{{ field.label }}" class="form-control" required/>
+      {% elif field.name == "email" or field.name == "username"%}
+      <input type="email" name="{{ field.name }}" placeholder="{{ field.label }}" class="form-control" required/>
+      {% elif field.name == "first_name" or field.name == "last_name" %}
+      <input type = "text" required name="{{ field.name }}" placeholder="{{ field.label }}" class="form-control" minlength= "2" maxlength="30" pattern="[A-Za-z\s]+"/>
+      
+      {% endif %}
+
+      
     </div>
     {% endfor %}
     <button type="submit" class="btn-primary">

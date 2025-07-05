@@ -3,7 +3,7 @@ from django.shortcuts import render
 from django.views.generic.edit import CreateView
 from django.contrib.auth.views import LoginView,LogoutView
 from django.urls import reverse_lazy
-
+from typing import Dict, Any
 
 # Create your views here.
 
@@ -12,7 +12,7 @@ class RegisterView(CreateView):
     form_class = UserRegisterForm
     template_name = 'auth.html'
     success_url = '/'
-    def get_context_data(self, **kwargs):
+    def get_context_data(self, **kwargs:Dict[str, Any]) -> Dict[str, Any]:
     
         """
         Extend the context data with an additional key-value pair indicating
@@ -29,7 +29,7 @@ class LoginView(LoginView):
     template_name = 'auth.html'
     success_url = '/'
 
-    def get_context_data(self, **kwargs):
+    def get_context_data(self, **kwargs:Dict[str, Any]) -> Dict[str, Any]:
         """
         Extend the context data with an additional key-value pair indicating
         the form type as 'login'. This is used to differentiate the context

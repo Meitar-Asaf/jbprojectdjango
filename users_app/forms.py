@@ -31,6 +31,8 @@ class UserRegisterForm(UserCreationForm):
         self.fields['password1'].help_text = ''
         self.fields['password2'].help_text = ''
         
+        
+        
     class Meta:
         model = User
         fields = ['first_name', 'last_name','email', 'password1', 'password2']

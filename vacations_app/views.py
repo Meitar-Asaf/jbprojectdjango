@@ -7,12 +7,16 @@ from django.views.generic import ListView, CreateView, DeleteView
 from django.contrib.auth.mixins import LoginRequiredMixin
 from braces.views import StaffuserRequiredMixin
 from django.urls import reverse_lazy
+from datetime import datetime
+from django.http import HttpRequest, HttpResponse
+from typing import Dict, Any
+
 
 class HomeView(LoginRequiredMixin,ListView):
     template_name = 'home.html'
     model = Vacation
     context_object_name = 'vacations'
-    def get_context_data(self, **kwargs):
+    def get_context_data(self, **kwargs:Dict[str, Any]) -> Dict[str, Any]:
         """
         Add a 'liked' attribute to each vacation in the context
         indicating whether the current user has liked it or not.
@@ -20,6 +24,7 @@ class HomeView(LoginRequiredMixin,ListView):
         context = super().get_context_data(**kwargs)
         user = self.request.user
         vacations = context['vacations']
+        context["today"]= datetime.now().date()
         for vacation in vacations:
             vacation.liked = vacation.likes.filter(user=user).exists()
         return context
@@ -27,6 +32,7 @@ class HomeView(LoginRequiredMixin,ListView):
 class CreateVacationView(LoginRequiredMixin,StaffuserRequiredMixin,CreateView):
     template_name = 'add_vacation.html'
     form_class = VacationForm
+    success_url = reverse_lazy('home')
 
 class DeleteVacationView(LoginRequiredMixin,StaffuserRequiredMixin,DeleteView):
     template_name = 'confirm_delete.html'
@@ -34,7 +40,7 @@ class DeleteVacationView(LoginRequiredMixin,StaffuserRequiredMixin,DeleteView):
     success_url = reverse_lazy('home')
 
 
-def unlike_vacation(request):
+def unlike_vacation(request:HttpRequest) -> HttpResponse:
     """
     Unlike a vacation. This view is supposed to be called via a POST request with
     a 'vacation_id' parameter. It deletes the like from the database and redirects
@@ -44,7 +50,7 @@ def unlike_vacation(request):
     Likes.objects.filter(vacation=vacation,user = request.user).delete()
     return redirect('home')
 
-def like_vacation(request):
+def like_vacation(request:HttpRequest) -> HttpResponse:
     """
     Like a vacation. This view is supposed to be called via a POST request with
     a 'vacation_id' parameter. It creates a like in the database and redirects

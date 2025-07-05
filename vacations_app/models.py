@@ -14,7 +14,7 @@ class Country(models.Model):
         """
         return self.country_name
     
-def validate_date(start_date: date, end_date: date):
+def validate_date(start_date: date, end_date: date) -> None:
     """
     Validate a start and end date of a vacation.
 
@@ -30,6 +30,7 @@ def validate_date(start_date: date, end_date: date):
     if start_date <= date.today():
         raise ValidationError("Start date must be in the future.")
     if end_date <= start_date:
+
         raise ValidationError("End date must be after start date.")
     
 

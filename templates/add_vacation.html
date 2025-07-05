@@ -1,12 +1,50 @@
 {% extends "layout.html" %}
 
 {% block content %}
+
 <div class="form-card">
-    <h2>Add Vacation</h2>
-    <form method="post" enctype="multipart/form-data">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit" class="btn-primary">Add Vacation</button>
-    </form>
+  <h2>Add Vacation</h2>
+  <form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+
+    {% for error in form.non_field_errors %}
+      <div class="field-error">{{ error }}</div>
+    {% endfor %}
+
+    {% for field in form.visible_fields %}
+      {% for error in field.errors %}
+        <div class="field-error">{{ error }}</div>
+      {% endfor %}
+
+      <div>
+        {{ field.label_tag }}
+
+        {% if field.name == "description" %}
+          <textarea name="{{ field.name }}" placeholder="Describe the next dreamy vacation..." class="form-control" minlength="10" required>{% if field.value %}
+  {{ field.value }}
+{% endif %}</textarea>
+
+        {% elif field.name == "start_date" or field.name == "end_date" %}
+          <input type="date" name="{{ field.name }}" placeholder="{{ field.label }}" class="form-control" required min="{{ today }}" value="{{ field.value }}">
+
+        {% elif field.name == "price" %}
+          <input type="number" name="{{ field.name }}" placeholder="{{ field.label }}" class="form-control" required min="0" max="10000" value="{{ field.value }}">
+
+        {% elif field.name == "country" %}
+          {{ field }}
+
+        {% elif field.name == "image" %}
+          <input type="file" name="{{ field.name }}" class="form-control" required>
+
+        {% else %}
+          {{ field }}
+
+        {% endif %}
+      </div>
+    {% endfor %}
+
+    <button type="submit" class="btn-primary">Add Vacation</button>
+  </form>
 </div>
+
 {% endblock %}
