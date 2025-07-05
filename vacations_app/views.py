@@ -3,9 +3,10 @@ from .froms import VacationForm, CountryForm
 
 from django.contrib.auth.models import User
 from django.shortcuts import render, redirect
-from django.views.generic import ListView, CreateView
+from django.views.generic import ListView, CreateView, DeleteView
 from django.contrib.auth.mixins import LoginRequiredMixin
 from braces.views import StaffuserRequiredMixin
+from django.urls import reverse_lazy
 
 class HomeView(LoginRequiredMixin,ListView):
     template_name = 'home.html'
@@ -26,6 +27,12 @@ class HomeView(LoginRequiredMixin,ListView):
 class CreateVacationView(LoginRequiredMixin,StaffuserRequiredMixin,CreateView):
     template_name = 'add_vacation.html'
     form_class = VacationForm
+
+class DeleteVacationView(LoginRequiredMixin,StaffuserRequiredMixin,DeleteView):
+    template_name = 'confirm_delete.html'
+    model = Vacation
+    success_url = reverse_lazy('home')
+
 
 def unlike_vacation(request):
     """

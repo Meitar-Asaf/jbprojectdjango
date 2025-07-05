@@ -1,0 +1,26 @@
+{% extends 'layout.html' %}
+{% block header %}{% endblock %}
+
+{% block content %}
+<div class="form-card">
+    <h2>Confirm Delete</h2>
+    <p>Are you sure you want to delete  </p>
+    <div class="card">
+        <div class="card-body">
+            <img src="{{ vacation.image.url }}">
+            <h3>{{ vacation.country}}</h3>
+            <br>
+            <p>{{ vacation.description }}</p>
+            <br>
+            <p>{{ vacation.start_date }} - {{ vacation.end_date }}</p>
+            <br>
+            <p>${{ vacation.price }}</p>
+        </div>
+    </div>
+    <form method="post">
+        {% csrf_token %}
+        <button type="submit" class="btn-primary">Delete</button>
+        <a href="{% url 'home' %}" class="btn-secondary">Cancel</a>
+    </form>
+</div>
+{% endblock %}

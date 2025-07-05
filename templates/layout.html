@@ -19,7 +19,7 @@
             {% if user.is_staff %}
                 <li><a href="{% url 'add_vacation' %}">Add Vacation</a></li>
             {% endif %}
-            <li><form action="{% url 'logout' %}" method="post">{% csrf_token %}<button type="submit" class="unseen-button">Logout</button></form></li>
+            <li><form action="{% url 'logout' %}" method="post">{% csrf_token %}<button type="submit">Logout</button></form></li>
         </ul>
     </nav>
 </header>
