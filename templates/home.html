@@ -28,10 +28,12 @@
                 <p>${{ vacation.price }}</p>
             {% if user.is_staff %}
             <a href="{% url 'delete_vacation' vacation.id %}" class="btn-primary">Delete</a>
+            <a href="{% url 'update_vacation' vacation.id %}" class="btn-secondary">Edit</a>
             <span class="likes-count"> {{ vacation.likes.count }}</span></button>
             {% else %}
             {% if vacation.liked %}
                 <form action="{% url 'unlike_vacation' %}" method="post">
+                    {% csrf_token %}
             {% else %}
                 <form action="{% url 'like_vacation' %}" method="POST">
             {% endif %}

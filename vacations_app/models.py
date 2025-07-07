@@ -41,7 +41,7 @@ class Vacation(models.Model):
     start_date = models.DateField(blank=False, null=False)
     end_date = models.DateField(blank=False, null=False)
     price = models.DecimalField(max_digits=10, decimal_places=2, blank=False, null=False)
-    image = models.ImageField(upload_to='uploads/', blank=False, null=False)
+    image = models.ImageField(upload_to='uploads/', blank=True, null=True)
 
     def clean(self):
         """

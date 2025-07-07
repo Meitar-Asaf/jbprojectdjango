@@ -3,7 +3,7 @@ from .froms import VacationForm, CountryForm
 
 from django.contrib.auth.models import User
 from django.shortcuts import render, redirect
-from django.views.generic import ListView, CreateView, DeleteView
+from django.views.generic import ListView, CreateView, DeleteView, UpdateView
 from django.contrib.auth.mixins import LoginRequiredMixin
 from braces.views import StaffuserRequiredMixin
 from django.urls import reverse_lazy
@@ -28,7 +28,11 @@ class HomeView(LoginRequiredMixin,ListView):
         for vacation in vacations:
             vacation.liked = vacation.likes.filter(user=user).exists()
         return context
-    
+
+class UpdateVacationView(LoginRequiredMixin,StaffuserRequiredMixin,UpdateView):
+    template_name = 'add_vacation.html'
+    form_class = VacationForm
+    model = Vacation    
 class CreateVacationView(LoginRequiredMixin,StaffuserRequiredMixin,CreateView):
     template_name = 'add_vacation.html'
     form_class = VacationForm
