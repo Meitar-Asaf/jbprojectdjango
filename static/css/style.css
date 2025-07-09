@@ -1,4 +1,4 @@
-/* 1. Reset & Variables */
+
 * {
   box-sizing: border-box;
   margin: 0;
@@ -15,7 +15,7 @@
   --transition: 0.3s ease-in-out;
 }
 
-/* 2. Layout: flex column with sticky footer */
+
 html, body {
   height: 100%;
 }
@@ -37,14 +37,13 @@ body, p, a, li, button {
 
 
 
-/* 3. Container */
 .container {
   max-width: 1200px;
   width: 90%;
   margin: 0 auto;
 }
 
-/* 4. Navbar */
+
 .header {
   background: rgba(255,255,255,0.95);
   box-shadow: 0 2px 4px rgba(0,0,0,0.1);
@@ -105,21 +104,19 @@ body, p, a, li, button {
   cursor: pointer;
 }
 
-/* 5. Hero */
-.hero {
-  background-size: cover;
-  background-position: center;
+
+.title {
   padding: 6rem 0;
   text-align: center;
   color: #fff;
   flex-shrink: 0;
 }
-.hero-inner h1 {
+.title-inner h1 {
   font-family: var(--ff-heading);
   font-size: 3rem;
   margin-bottom: 1rem;
 }
-.hero-inner p {
+.title-inner p {
   font-size: 1.2rem;
   margin-bottom: 1.5rem;
 }
@@ -128,6 +125,35 @@ body, p, a, li, button {
 .main-content {
   flex: 1;
   padding: 2rem 0;
+}
+.image-container {
+  display: flex;
+  position: relative;
+  display: block;
+  overflow:visible;
+}
+
+.image-container img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.overlay-text {
+  display: flex;
+  position: absolute;
+  top: 0;
+  left: 30px;
+  width: 100%;
+  padding: 8px 0;
+  color: #fff;
+  gap: 10px;
+}
+.overlay-text a{
+  display: inline-block;
+  font-size: small;
+  text-decoration: none;
+  
 }
 
 /* 7. Footer */
@@ -143,7 +169,7 @@ body, p, a, li, button {
 /* 8. Featured grid (example inside content) */
 .featured-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px,1fr));
+  grid-template-columns: repeat(3, 1fr);
   gap: 1.5rem;
 }
 .card {
@@ -322,7 +348,7 @@ body, p, a, li, button {
 }
 .like-btn {
   margin-top: 1rem;
-  font-size: 1.2rem;
+  font-size:small;
   cursor: pointer;
   user-select: none;
   display: flex;
@@ -331,16 +357,19 @@ body, p, a, li, button {
   color: inherit;
   transition: var(--transition);
   border: none;
-  background-color: inherit;
+  border-radius: 12px;
+  padding: 0.2rem 0.4rem;
 }
+
+.liked{background: pink;}
+.unliked{background:silver;}
 
 .like-btn:hover {
   transform: scale(1.1);
-  color: var(--clr-secondary);
 }
 
 .likes-count {
-  font-weight: bold;
+  font-size: small;
   color: var(--clr-dark);
 }
 

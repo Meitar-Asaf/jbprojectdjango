@@ -5,8 +5,8 @@
 
 {% block content %}
 
-<section class="hero" style="background-image: url('{% static "images/hero.jpg" %}');">
-    <div class="hero-inner container">
+<section class="title">
+    <div class="title-inner">
         <h1>Your Next Dream Vacation Starts Here!</h1>
         <p>The hottest destinations, the finest hotels — all for you.</p>
     </div>
@@ -18,7 +18,20 @@
         {% for vacation in vacations %}
         <div class="card">
             <div class="card-body">
-                <img src="{{ vacation.image.url }}">
+                <div class="image-container">
+                    <img src="{{ vacation.image.url }}" >
+                    <div class="overlay-text">
+                        {% if user.is_staff %}
+                        <a href="{% url 'delete_vacation' vacation.id %}" class="like-btn unliked">&#x1F5D1; Delete</a>
+                        <a href="{% url 'update_vacation' vacation.id %}" class="like-btn unliked">&#x270E;Update</a>
+                        {% else %}
+                        <form action="{% if vacation.liked %}{% url 'unlike_vacation' %}{% else %}{% url 'like_vacation' %}{% endif %}" method="post">
+                                {% csrf_token %}
+                            <button type="submit" class="{% if vacation.liked %}like-btn liked{% else %}like-btn unliked{% endif %}" name="vacation_id" value="{{ vacation.id }}">{% if vacation.liked %}❤️{% else %}♡{% endif %}<span class="likes-count"> Likes {{ vacation.likes.count }}</span></button>
+                            </form>
+                        {% endif %}
+                    </div>
+                </div>
                 <h3>{{ vacation.country}}</h3>
                 <br>
                 <p>{{ vacation.description }}</p>
@@ -26,21 +39,7 @@
                 <p>{{ vacation.start_date }} - {{ vacation.end_date }}</p>
                 <br>
                 <p>${{ vacation.price }}</p>
-            {% if user.is_staff %}
-            <a href="{% url 'delete_vacation' vacation.id %}" class="btn-primary">Delete</a>
-            <a href="{% url 'update_vacation' vacation.id %}" class="btn-secondary">Edit</a>
-            <span class="likes-count"> {{ vacation.likes.count }}</span></button>
-            {% else %}
-            {% if vacation.liked %}
-                <form action="{% url 'unlike_vacation' %}" method="post">
-                    {% csrf_token %}
-            {% else %}
-                <form action="{% url 'like_vacation' %}" method="POST">
-            {% endif %}
-                    {% csrf_token %}
-                <button type="submit" class="like-btn" name="vacation_id" value="{{ vacation.id }}">❤️<span class="likes-count"> {{ vacation.likes.count }}</span></button>
-                </form>
-            {% endif %}
+            
             
             </div>
             </div>
