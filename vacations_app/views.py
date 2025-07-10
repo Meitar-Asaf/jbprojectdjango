@@ -1,5 +1,5 @@
 from vacations_app.models import Vacation,Likes
-from .froms import VacationForm, CountryForm
+from .froms import VacationForm, CountryForm, UpdateVacationForm
 
 from django.contrib.auth.models import User
 from django.shortcuts import render, redirect
@@ -31,7 +31,7 @@ class HomeView(LoginRequiredMixin,ListView):
 
 class UpdateVacationView(LoginRequiredMixin,StaffuserRequiredMixin,UpdateView):
     template_name = 'add_vacation.html'
-    form_class = VacationForm
+    form_class = UpdateVacationForm
     model = Vacation    
 class CreateVacationView(LoginRequiredMixin,StaffuserRequiredMixin,CreateView):
     template_name = 'add_vacation.html'

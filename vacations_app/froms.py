@@ -32,7 +32,7 @@ class VacationForm(forms.ModelForm):
         self.fields['country'].empty_label = None
 
 class UpdateVacationForm(VacationForm):
-    image = forms.ImageField(required=False, label='Image', widget=forms.FileInput(attrs={'type': 'file'}))
+    image = forms.ImageField(required=False, label='Image', widget=forms.FileInput(attrs={'type': 'file', "class": "form-control overlay-text"}))
 class CountryForm(forms.ModelForm):
     class Meta:
         model = Country

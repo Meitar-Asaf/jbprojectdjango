@@ -132,6 +132,9 @@ body, p, a, li, button {
   display: block;
   overflow:visible;
 }
+.image-container-update{
+  padding: 2rem 0;
+}
 
 .image-container img {
   width: 100%;
