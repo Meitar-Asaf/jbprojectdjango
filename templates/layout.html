@@ -13,7 +13,7 @@
 {% if user.is_authenticated %}
 <header class="header">
     <nav class="navbar container">
-        <div class="logo">Dreamy Vacations</div>
+        <div class="logo">Dreamy Vacations <div class = "small-logo">awaits you, {{ user.first_name }}</div></div>
         <ul class="nav-links">
             <li><a href="{% url 'home' %}">Home</a></li>
             {% if user.is_staff %}

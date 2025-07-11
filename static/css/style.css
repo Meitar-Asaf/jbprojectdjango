@@ -10,7 +10,7 @@
   --clr-accent: #ffd166;
   --clr-dark: #023047;
   --clr-light: #f1faee;
-  --ff-heading: 'Montserrat', sans-serif;
+  --ff-heading: 'Montserrat', 'Alex Brush';
   --ff-body: 'Lora', serif;
   --transition: 0.3s ease-in-out;
 }
@@ -60,6 +60,13 @@ body, p, a, li, button {
 .logo {
   font-family: var(--ff-heading);
   font-size: 1.8rem;
+  color: var(--clr-primary);
+  text-decoration: none;
+}
+
+small-logo {
+  font-family: var(--ff-heading);
+  font-size: 1rem;
   color: var(--clr-primary);
   text-decoration: none;
 }
@@ -127,19 +134,37 @@ body, p, a, li, button {
   padding: 2rem 0;
 }
 .image-container {
-  display: flex;
-  position: relative;
+  position: relative; /* שומר על המידות של התמונה */
   display: block;
-  overflow:visible;
-}
-.image-container-update{
-  padding: 2rem 0;
+  
 }
 
 .image-container img {
-  width: 100%;
+  display:flex;
+  max-width: 100%;
   height: auto;
-  display: block;
+  border-radius: 6px;
+}
+
+.image-container .overlay-btn {
+  top: 50px;
+  position: absolute;
+  right:0%;
+  left: 0;
+  background-color: rgba(0,0,0,0.6);
+  color: white;
+  border: none;
+  border-radius: 4px;
+  font-size: 14px;
+  cursor: pointer;
+  opacity: 0.5;
+  padding: 0;
+  margin: 0;
+  width:inherit;
+}
+
+.image-container .overlay-btn:hover {
+  opacity: 1;
 }
 
 .overlay-text {
@@ -152,6 +177,8 @@ body, p, a, li, button {
   color: #fff;
   gap: 10px;
 }
+
+
 .overlay-text a{
   display: inline-block;
   font-size: small;
@@ -178,7 +205,7 @@ body, p, a, li, button {
 .card {
   background: #fff;
   border-radius: 8px;
-  overflow: hidden;
+  overflow:hidden;
   box-shadow: 0 4px 8px rgba(0,0,0,0.05);
   transition: transform var(--transition);
 }

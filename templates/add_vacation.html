@@ -11,7 +11,7 @@
     {% if form.instance.image %}
     <div class="image-container image-container-update">
         <img src="{{ form.instance.image.url }}" alt="Image">
-        {{ field }}
+        <div class = "image-container-container">{{ field }}</div>
     </div>
     {% else %}
     {{ field }}
@@ -22,8 +22,12 @@
     
     {% endif %}
     {% endfor %}
+    {% if object %}
+    <br>
+    <button type="submit" class="btn-primary">Update Vacation</button>
+    {% else %}
     <button type="submit" class="btn-primary">Add Vacation</button>
-    
+    {% endif %}
   </form>
 </div>
 

@@ -32,7 +32,8 @@ class HomeView(LoginRequiredMixin,ListView):
 class UpdateVacationView(LoginRequiredMixin,StaffuserRequiredMixin,UpdateView):
     template_name = 'add_vacation.html'
     form_class = UpdateVacationForm
-    model = Vacation    
+    model = Vacation
+    success_url = reverse_lazy('home')    
 class CreateVacationView(LoginRequiredMixin,StaffuserRequiredMixin,CreateView):
     template_name = 'add_vacation.html'
     form_class = VacationForm

@@ -27,7 +27,7 @@
                         {% else %}
                         <form action="{% if vacation.liked %}{% url 'unlike_vacation' %}{% else %}{% url 'like_vacation' %}{% endif %}" method="post">
                                 {% csrf_token %}
-                            <button type="submit" class="{% if vacation.liked %}like-btn liked{% else %}like-btn unliked{% endif %}" name="vacation_id" value="{{ vacation.id }}">{% if vacation.liked %}❤️{% else %}♡{% endif %}<span class="likes-count"> Likes {{ vacation.likes.count }}</span></button>
+                            <button type="submit" class="{% if vacation.liked %}like-btn liked{% else %}like-btn unliked{% endif %}" name="vacation_id" value="{{ vacation.id }}">{% if vacation.liked %}❤️{% else %}&#129293;{% endif %}<span class="likes-count"> Likes {{ vacation.likes.count }}</span></button>
                             </form>
                         {% endif %}
                     </div>

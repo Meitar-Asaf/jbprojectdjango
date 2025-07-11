@@ -14,24 +14,8 @@ class Country(models.Model):
         """
         return self.country_name
     
-def validate_date(start_date: date, end_date: date) -> None:
-    """
-    Validate a start and end date of a vacation.
 
-    This function checks if the start date is in the future and if the
-    end date is after the start date. If either of these conditions is
-    not met, it raises a ValidationError.
-
-    :param start_date: The start date of the vacation
-    :param end_date: The end date of the vacation
-    :raises ValidationError: If the start date is not in the future or
-        the end date is not after the start date
-    """
-    if start_date <= date.today():
-        raise ValidationError("Start date must be in the future.")
-    if end_date <= start_date:
-
-        raise ValidationError("End date must be after start date.")
+    
     
 
 
@@ -45,18 +29,35 @@ class Vacation(models.Model):
 
     def clean(self):
         """
-        Validate the start and end dates of the vacation.
+        This method is called by Django's model validation system to
+        perform any custom validation. It is called after the model's
+        built-in validation has been performed.
 
-        This method first calls the parent class' clean method to perform
-        any validation that needs to be done, then calls the
-        validate_date function to check that the start date is in the
-        future and that the end date is after the start date.
+        This method raises a ValidationError if any of the following
+        conditions are not met:
 
-        :raises ValidationError: If the start date is not in the future or
-            the end date is not after the start date
+        - start_date is in the future
+        - end_date is after start_date
+        - price is greater than 0
+        - price is less than 10000
+        - description is at least 10 characters long
+        - image is not None
         """
         super().clean()
-        validate_date(self.start_date, self.end_date)
+        if not self.pk:
+            if self.start_date <= date.today():
+                raise ValidationError("Start date must be in the future.")
+            if self.image is None:
+                raise ValidationError("Image is required.")
+        if self.end_date <= self.start_date:
+            raise ValidationError("End date must be after start date.")
+        if self.price < 0:
+            raise ValidationError("Price must be greater than 0")
+        if self.price > 10000:
+            raise ValidationError("Price must be less than 10000")
+        if len(self.description) < 10:
+            raise ValidationError("Description must be at least 10 characters long.")
+            
     class Meta:
         unique_together = ('country', 'start_date', 'end_date')
 
