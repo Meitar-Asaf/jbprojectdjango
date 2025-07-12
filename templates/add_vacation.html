@@ -3,7 +3,11 @@
 {% block content %}
 
 <div class="form-card">
+  {% if object %}
+  <h2>Update Vacation</h2>
+  {% else %}
   <h2>Add Vacation</h2>
+  {% endif %}
   <form method="post" enctype="multipart/form-data">
     {% csrf_token %}
     {% for field in form %}

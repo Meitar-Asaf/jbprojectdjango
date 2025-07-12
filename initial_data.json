@@ -16,7 +16,7 @@
     "start_date": "2025-08-15",
     "end_date": "2025-08-25",
     "price": "2100.00",
-    "image": "japan.jpg"
+    "image": "vacation_images/japan.jpg"
   }},
   { "model": "vacations_app.vacation", "pk": 2, "fields": {
     "country": 2,
@@ -24,7 +24,7 @@
     "start_date": "2025-09-10",
     "end_date": "2025-09-20",
     "price": "1950.00",
-    "image": "rome.jpg"
+    "image": "vacation_images/rome.jpg"
   }},
   { "model": "vacations_app.vacation", "pk": 3, "fields": {
     "country": 3,
@@ -32,7 +32,7 @@
     "start_date": "2025-07-05",
     "end_date": "2025-07-15",
     "price": "1800.00",
-    "image": "brazil.jpg"
+    "image": "vacation_images/brazil.jpeg"
   }},
   { "model": "vacations_app.vacation", "pk": 4, "fields": {
     "country": 4,
@@ -40,7 +40,7 @@
     "start_date": "2025-10-01",
     "end_date": "2025-10-10",
     "price": "1750.00",
-    "image": "canada.jpg"
+    "image": "vacation_images/canada.jpg"
   }},
   { "model": "vacations_app.vacation", "pk": 5, "fields": {
     "country": 5,
@@ -48,7 +48,7 @@
     "start_date": "2025-11-12",
     "end_date": "2025-11-22",
     "price": "2200.00",
-    "image": "great_barrier_reef.jpg"
+    "image": "vacation_images/great_barrier_reef.jpg"
   }},
   { "model": "vacations_app.vacation", "pk": 6, "fields": {
     "country": 6,
@@ -56,7 +56,7 @@
     "start_date": "2025-06-20",
     "end_date": "2025-06-30",
     "price": "2000.00",
-    "image": "greece.jpg"
+    "image": "vacation_images/greece.jpg"
   }},
   { "model": "vacations_app.vacation", "pk": 7, "fields": {
     "country": 7,
@@ -64,7 +64,7 @@
     "start_date": "2025-09-05",
     "end_date": "2025-09-15",
     "price": "1600.00",
-    "image": "thailand.jpg"
+    "image": "vacation_images/thailand.jpg"
   }},
   { "model": "vacations_app.vacation", "pk": 8, "fields": {
     "country": 8,
@@ -72,7 +72,7 @@
     "start_date": "2025-12-01",
     "end_date": "2025-12-10",
     "price": "1500.00",
-    "image": "marrakech.jpg"
+    "image": "vacation_images/marrakech.jpg"
   }},
   { "model": "vacations_app.vacation", "pk": 9, "fields": {
     "country": 9,
@@ -80,7 +80,7 @@
     "start_date": "2025-12-15",
     "end_date": "2025-12-25",
     "price": "2500.00",
-    "image": "switzerland.jpg"
+    "image": "vacation_images/switzerland.jpg"
   }},
   { "model": "vacations_app.vacation", "pk": 10, "fields": {
     "country": 10,
@@ -88,7 +88,7 @@
     "start_date": "2025-10-20",
     "end_date": "2025-10-30",
     "price": "2400.00",
-    "image": "newzealand.jpg"
+    "image": "vacation_images/new_zealand.jpeg"
   }},
   { "model": "vacations_app.vacation", "pk": 11, "fields": {
     "country": 1,
@@ -96,7 +96,7 @@
     "start_date": "2025-08-01",
     "end_date": "2025-08-10",
     "price": "2100.00",
-    "image": "tokyo.jpg"
+    "image": "vacation_images/tokyo.jpg"
   }},
   { "model": "vacations_app.vacation", "pk": 12, "fields": {
     "country": 2,
@@ -104,7 +104,7 @@
     "start_date": "2025-07-18",
     "end_date": "2025-07-28",
     "price": "2000.00",
-    "image": "tuscany.jpg"
+    "image": "vacation_images/tuscany.jpg"
   }},
 
   { "model": "auth.user", "pk": 100, "fields": {

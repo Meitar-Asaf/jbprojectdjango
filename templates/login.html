@@ -7,27 +7,34 @@
     {% if form_type == "signup" %}
     Create Your Account
     {% elif form_type == "login" %} Log In to your account {% endif %}</h2>
+
   <form method="post">
+    {% block form %}
     {% csrf_token %}
+    {% if form.non_field_errors %}
+      {% for error in form.non_field_errors %}
+        <div class="field-error">{{ error }}</div>
+      {% endfor %}
+    {% endif %}
     {% for field in form.visible_fields %}
     {% for error in field.errors %}
       <div class="field-error">{{ error }}</div>
     {% endfor %}
-    
     <div>
       {{ field.label_tag }}
-      {% if field.name == "password1" or field.name == "password2" or field.name == "password"%}
+      {% if field.name == "password"%}
       <input type="password" name="{{ field.name }}" placeholder="{{ field.label }}" class="form-control" required/>
       {% elif field.name == "email" or field.name == "username"%}
       <input type="email" name="{{ field.name }}" placeholder="{{ field.label }}" class="form-control" required/>
-      {% elif field.name == "first_name" or field.name == "last_name" %}
-      <input type = "text" required name="{{ field.name }}" placeholder="{{ field.label }}" class="form-control" minlength= "2" maxlength="30" pattern="[A-Za-z\s]+"/>
+      
       
       {% endif %}
 
       
     </div>
+    
     {% endfor %}
+    {% endblock form %}
     <button type="submit" class="btn-primary">
         {% if form_type == "signup" %}
         Sign Up

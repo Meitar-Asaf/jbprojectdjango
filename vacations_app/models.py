@@ -25,7 +25,7 @@ class Vacation(models.Model):
     start_date = models.DateField(blank=False, null=False)
     end_date = models.DateField(blank=False, null=False)
     price = models.DecimalField(max_digits=10, decimal_places=2, blank=False, null=False)
-    image = models.ImageField(upload_to='uploads/', blank=True, null=True)
+    image = models.ImageField(upload_to='vacation_images/', blank=True, null=True)
 
     def clean(self):
         """
@@ -57,9 +57,27 @@ class Vacation(models.Model):
             raise ValidationError("Price must be less than 10000")
         if len(self.description) < 10:
             raise ValidationError("Description must be at least 10 characters long.")
+    def delete(self, *args, **kwargs):
+        """
+        Override the default delete method to delete the image as well.
+
+        The image.delete() method is called with save=False to prevent the
+        image from being saved after deletion. This is necessary because the
+        image is being deleted by the model's delete method, and we don't want
+        the image to be saved after deletion.
+
+        This method is called when the model instance is deleted. It deletes the
+        image associated with the instance, and then calls the parent class's
+        delete method to delete the instance itself.
+        """
+
+        if self.image:
+            self.image.delete(save=False)
+        super().delete(*args, **kwargs)
             
     class Meta:
         unique_together = ('country', 'start_date', 'end_date')
+        ordering = ['start_date']
 
 
 class Likes(models.Model):

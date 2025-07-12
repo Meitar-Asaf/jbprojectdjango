@@ -1,0 +1,17 @@
+{% extends 'login.html' %}
+{% block form %}
+{% csrf_token %}
+{% if form.non_field_errors %}
+      {% for error in form.non_field_errors %}
+        <div class="field-error">{{ error }}</div>
+      {% endfor %}
+    {% endif %}
+{% for field in form.visible_fields %}
+    {% for error in field.errors %}
+      <div class="field-error">{{ error }}</div>
+    {% endfor %}
+    <div>
+        {{ field }}
+    </div>
+{% endfor %}
+{% endblock form %}

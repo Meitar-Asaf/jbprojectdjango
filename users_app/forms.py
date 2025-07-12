@@ -3,9 +3,9 @@ from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth.models import User
 
 class UserRegisterForm(UserCreationForm):
-    first_name = forms.CharField(max_length=30, label='First Name', required= True)
-    last_name = forms.CharField(max_length=30, label='Last Name', required= True)
-    email = forms.EmailField(required=True)
+    first_name = forms.CharField(max_length=30, label='First Name', required= True, widget=forms.TextInput(attrs={'placeholder': 'First Name', 'type': 'text', 'class': 'form-control'}))
+    last_name = forms.CharField(max_length=30, label='Last Name', required= True, widget=forms.TextInput(attrs={'placeholder': 'Last Name', 'type': 'text', 'class': 'form-control'}))
+    email = forms.EmailField(required=True,  label='Email', widget=forms.EmailInput(attrs={'placeholder': 'Email', 'type': 'email', 'class': 'form-control'}))
 
     def save(self, commit=True):
         """
@@ -30,7 +30,19 @@ class UserRegisterForm(UserCreationForm):
         super().__init__(*args, **kwargs)
         self.fields['password1'].help_text = ''
         self.fields['password2'].help_text = ''
-        
+        self.fields['password1'].widget.attrs.update({
+            'placeholder': 'Password',
+            'class': 'form-control',
+            'required': 'required',
+            'type': 'password',
+        })
+
+        self.fields['password2'].widget.attrs.update({
+            'placeholder': 'Confirm Password',
+            'class': 'form-control',
+            'required': 'required',
+            'type': 'password',
+        })
         
         
     class Meta:
