@@ -1,9 +1,3 @@
-מצוין נשמה — הבנתי אותך. את רוצה README שאפשר לפתוח אותו בפעם הראשונה בפרויקט, בלי להכיר את הקוד, ולהבין הכל — איך להרים את הפרויקט, איך לבדוק אותו, ומה חשוב לדעת.
-הנה גרסה מדויקת ומסודרת של README כזה, בדף אחד, באנגלית:
-
----
-
-````markdown
 # 🌍 Dreamy Vacations — Django Web Application
 
 This is a Django-based web app for managing, browsing, and booking vacation packages.  
