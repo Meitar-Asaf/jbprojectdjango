@@ -80,24 +80,6 @@ To run all Django tests:
 python manage.py test
 ```
 
-### Loading Custom Test Data for Tests
-
-If the tests depend on specific test data (like `test_data.json`), it should be placed in the root directory (same as `manage.py`) and loaded inside the test class using:
-
-```python
-from django.test import TestCase
-from django.core.management import call_command
-
-class ExampleTests(TestCase):
-    @classmethod
-    def setUpTestData(cls):
-        call_command('loaddata', 'test_data.json')
-```
-
-Django automatically creates a **temporary test database** when running tests, so your main data is safe.
-
----
-
 ## 📌 Important Notes for New Developers
 
 * **User authentication** is based on **email as username**.
