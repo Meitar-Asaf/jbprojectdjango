@@ -1,29 +1,30 @@
 # 🌍 Dreamy Vacations — Django Web Application
 
-This is a Django-based web app for managing, browsing, and booking vacation packages.  
+This is a Django-based web app for managing, browsing, and booking vacation packages.
 The project includes initial sample data, user authentication, an admin panel, and a test suite.
 
 ---
 
 ## 📖 What This Project Includes
 
-- A vacation browsing and booking system
-- Admin interface for managing vacations
-- User authentication (email as username)
-- Likes system for vacations
-- Custom frontend with CSS styling and background imagery
-- JSON fixture data for development and test environments
-- Automated Django tests
+* A vacation browsing and booking system
+* Admin interface for managing vacations
+* User authentication (email as username)
+* Likes system for vacations
+* Custom frontend with CSS styling and background imagery
+* JSON fixture data for development and test environments
+* Automated Django tests
 
 ---
 
 ## ⚙️ Project Setup (For Local Development)
 
 1. **Create and activate a virtual environment:**
+
    ```bash
    python -m venv venv
    source venv/bin/activate  # On Windows: venv\Scripts\activate
-````
+   ```
 
 2. **Install dependencies:**
 
@@ -31,13 +32,36 @@ The project includes initial sample data, user authentication, an admin panel, a
    pip install -r requirements.txt
    ```
 
-3. **Apply database migrations:**
+3. **Configure PostgreSQL database:**
+   Make sure you have PostgreSQL installed and running.
+   Create the database if it doesn’t exist:
+
+   ```sql
+   CREATE DATABASE vacations_db;
+   ```
+
+   Update your `settings.py` with the following database settings:
+
+   ```python
+   DATABASES = {
+       'default': {
+           'ENGINE': 'django.db.backends.postgresql',
+           'NAME': 'vacations_db',
+           'USER': 'postgres',
+           'PASSWORD': 'Meitar1997!',
+           'HOST': 'localhost',
+           'PORT': '5432',
+       }
+   }
+   ```
+
+4. **Apply database migrations:**
 
    ```bash
    python manage.py migrate
    ```
 
-4. **Load initial sample data:**
+5. **Load initial sample data:**
 
    ```bash
    python manage.py loaddata initial_data.json
@@ -80,16 +104,17 @@ To run all Django tests:
 python manage.py test
 ```
 
+---
+
 ## 📌 Important Notes for New Developers
 
-* **User authentication** is based on **email as username**.
-* A **favicon request** may appear in the logs. You can optionally add a `favicon.ico` to `static/` if needed.
-* All static files are in the `static/` directory and loaded via `{% static %}` tags in templates.
-* **Admin users** have permissions to add, edit, and delete vacation packages.
-* A **likes system** is implemented for vacations.
-* Custom fonts and CSS are loaded via Google Fonts and local static files.
-* Uses Django’s **messages framework** for success/error notifications.
-* Data fixtures must be loaded before development or testing for proper functionality.
+* User authentication is based on email as username.
+* A favicon request may appear in the logs; optionally add a `favicon.ico` to `static/`.
+* Static files are in the `static/` directory and loaded via `{% static %}` tags.
+* Admin users can add/edit/delete vacations.
+* Likes system implemented for vacations.
+* Uses Django’s messages framework for notifications.
+* Data fixtures must be loaded before development/testing.
 
 ---
 
@@ -123,3 +148,8 @@ python manage.py test
 If you’re new to this project or Django, feel free to contact the original developer or project maintainer for clarifications.
 
 Happy coding ✈️
+
+---
+
+רוצה שאכין לך את הקובץ בפורמט `.md` מוכן להורדה?
+
