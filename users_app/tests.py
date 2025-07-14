@@ -164,7 +164,6 @@ class UserTestCase(TestCase):
         """
         
         response = self.client.post(reverse('signup'), {'email': 'email@email.com','first_name': 'first', 'last_name': 'last','password1': 'newpassword232323', 'password2': 'newpassword232323'})
-        print(response.content)
         self.assertRedirects(response, reverse('login'), status_code=302, target_status_code=200)
         self.assertTrue(User.objects.filter(email='email@email.com').exists())
 
