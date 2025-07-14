@@ -11,7 +11,7 @@ from typing import Dict, Any
 class RegisterView(CreateView):
     form_class = UserRegisterForm
     template_name = 'signup.html'
-    success_url = '/'
+    success_url = reverse_lazy('login')
     def get_context_data(self, **kwargs:Dict[str, Any]) -> Dict[str, Any]:
     
         """
@@ -27,7 +27,7 @@ class RegisterView(CreateView):
 class LoginView(LoginView):
     form_class = UserLoginForm
     template_name = 'login.html'
-    success_url = '/'
+    success_url = reverse_lazy('home')
 
     def get_context_data(self, **kwargs:Dict[str, Any]) -> Dict[str, Any]:
         """

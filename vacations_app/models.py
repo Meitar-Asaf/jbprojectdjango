@@ -1,7 +1,8 @@
 from django.db import models
-from django.core.validators import MinValueValidator, MaxValueValidator
+from django.core.validators import MinValueValidator, MaxValueValidator, MinLengthValidator
 from django.core.exceptions import ValidationError
 from datetime import date
+
 # Create your models here.
 class Country(models.Model):
     country_name = models.CharField(max_length=100, blank=False, null=False, unique=True)
@@ -21,42 +22,78 @@ class Country(models.Model):
 
 class Vacation(models.Model):
     country = models.ForeignKey(Country, on_delete=models.CASCADE, blank= False, null=False)
-    description = models.TextField()
+    description = models.TextField(blank=False, null=False, validators=[MinLengthValidator(10, message="Description must be at least 10 characters")])
     start_date = models.DateField(blank=False, null=False)
     end_date = models.DateField(blank=False, null=False)
     price = models.DecimalField(max_digits=10, decimal_places=2, blank=False, null=False)
     image = models.ImageField(upload_to='vacation_images/', blank=True, null=True)
 
     def clean(self):
+       
+       
         """
-        This method is called by Django's model validation system to
-        perform any custom validation. It is called after the model's
-        built-in validation has been performed.
+        This method is called after the model's built-in validation is done, and
+        is used to add additional validation to the model.
 
-        This method raises a ValidationError if any of the following
-        conditions are not met:
+        The method raises a ValidationError if the start date is in the past,
+        if there is no image, if the end date is before the start date, if the
+        price is not greater than 0 or less than 10000, or if the description
+        is less than 10 characters long.
 
-        - start_date is in the future
-        - end_date is after start_date
-        - price is greater than 0
-        - price is less than 10000
-        - description is at least 10 characters long
-        - image is not None
+        The method calls the parent class's clean method first, to ensure that
+        the model's built-in validation is done first.
+
+        The method is called when the model instance is saved, and is used to
+        validate the entire model instance before it is saved to the database.
         """
+       
         super().clean()
+
         if not self.pk:
-            if self.start_date <= date.today():
+            if self.start_date and self.start_date <= date.today():
                 raise ValidationError("Start date must be in the future.")
-            if self.image is None:
+            if not self.image:
                 raise ValidationError("Image is required.")
-        if self.end_date <= self.start_date:
+
+        if not self.country_id:
+            raise ValidationError("Country is required.")
+
+        if not Country.objects.filter(pk=self.country_id).exists():
+            raise ValidationError("Country does not exist.")
+
+        if self.start_date and self.end_date and self.end_date <= self.start_date:
             raise ValidationError("End date must be after start date.")
-        if self.price < 0:
-            raise ValidationError("Price must be greater than 0")
-        if self.price > 10000:
-            raise ValidationError("Price must be less than 10000")
-        if len(self.description) < 10:
+
+        if self.price is not None:
+            if self.price < 0:
+                raise ValidationError("Price must be greater than 0")
+            if self.price > 10000:
+                raise ValidationError("Price must be less than 10000")
+
+        if self.description and len(self.description) < 10:
             raise ValidationError("Description must be at least 10 characters long.")
+
+        
+        
+    def save(self, *args, **kwargs):
+        
+        """
+        Override the default save method to call full_clean before saving.
+
+        The full_clean method is called to validate the entire model instance
+        before it is saved to the database. This is necessary because the
+        model's built-in validation is not enough to validate the entire
+        instance, and we need to call the clean method to add additional
+        validation.
+
+        The parent class's save method is called after full_clean to save the
+        instance to the database.
+
+        This method is called when the model instance is saved.
+        """
+        
+        self.full_clean()
+        super().save(*args, **kwargs)
     def delete(self, *args, **kwargs):
         """
         Override the default delete method to delete the image as well.
