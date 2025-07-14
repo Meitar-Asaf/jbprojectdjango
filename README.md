@@ -1,9 +1,3 @@
-מצוין נשמה — הבנתי אותך. את רוצה README שאפשר לפתוח אותו בפעם הראשונה בפרויקט, בלי להכיר את הקוד, ולהבין הכל — איך להרים את הפרויקט, איך לבדוק אותו, ומה חשוב לדעת.
-הנה גרסה מדויקת ומסודרת של README כזה, בדף אחד, באנגלית:
-
----
-
-````markdown
 # 🌍 Dreamy Vacations — Django Web Application
 
 This is a Django-based web app for managing, browsing, and booking vacation packages.  
@@ -85,24 +79,6 @@ To run all Django tests:
 ```bash
 python manage.py test
 ```
-
-### Loading Custom Test Data for Tests
-
-If the tests depend on specific test data (like `test_data.json`), it should be placed in the root directory (same as `manage.py`) and loaded inside the test class using:
-
-```python
-from django.test import TestCase
-from django.core.management import call_command
-
-class ExampleTests(TestCase):
-    @classmethod
-    def setUpTestData(cls):
-        call_command('loaddata', 'test_data.json')
-```
-
-Django automatically creates a **temporary test database** when running tests, so your main data is safe.
-
----
 
 ## 📌 Important Notes for New Developers
 
