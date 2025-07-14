@@ -16,7 +16,7 @@
     "start_date": "2025-08-15",
     "end_date": "2025-08-25",
     "price": "2100.00",
-    "image": "vacation_images/japan.jpg"
+    "image": "vacation_images/japan.jpeg"
   }},
   { "model": "vacations_app.vacation", "pk": 2, "fields": {
     "country": 2,
